@@ -18,14 +18,9 @@ import webapp2
 # Simple hello world using TensorFlow
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write(hello = tf.constant('Hello, TensorFlow!'))
-		# Start tf session
-		sess = tf.Session()
-		
-		# Run the op
-		print(sess.run(hello))  
-
+        hello = tf.constant('Hello, TensorFlow!')
+	sess = tf.Session()
+	print(sess.run(hello))
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
