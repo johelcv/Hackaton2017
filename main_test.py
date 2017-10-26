@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import webtest
-
+import tensorflow as tf
 import main
 
 
@@ -21,6 +21,10 @@ def test_get():
     app = webtest.TestApp(main.app)
 
     response = app.get('/')
+    hello = tf.constant('Hello, TensorFlow!')
 
-    assert response.status_int == 200
-    assert response.body == 'Hello, World!'
+    # Start tf session
+    sess = tf.Session()
+
+    # Run the op
+    print(sess.run(hello))  
